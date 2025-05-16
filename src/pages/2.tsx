@@ -8,7 +8,7 @@ const extensions = [ StarterKit.configure({
     paragraph: false,
   }),
   Paragraph,]
-
+  import { renderToReactElement } from '@tiptap/static-renderer/pm/react'
 const content = '<p>Hello World!</p>'
 
 const Tiptap = () => {
@@ -17,13 +17,24 @@ const Tiptap = () => {
     content,
   })
 
-  return (
-    <>
-      <EditorContent editor={editor} />
-      <FloatingMenu editor={editor} >This is the floating menu</FloatingMenu>
-      <BubbleMenu editor={editor} >This is the bubble menu</BubbleMenu>
-    </>
-  )
+  renderToReactElement({
+    extensions: [StarterKit], // using your extensions
+    content: {
+      type: 'doc',
+      content: [
+        {
+          type: 'paragraph',
+          content: [
+            {
+              type: 'text',
+              text: 'Hello World!',
+            },
+          ],
+        },
+      ],
+    },
+  })
+  
 }
 
 const App = () => {

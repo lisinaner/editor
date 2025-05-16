@@ -5,5 +5,10 @@ import Pages from 'vite-plugin-pages'
 export default defineConfig({
   plugins: [react(),
     Pages(),
-  ]
+  ],
+  resolve: {
+    alias: {
+      "@tiptap/core/jsx-dev-runtime": "@tiptap/core/jsx-runtime",
+    },
+  },
 })
